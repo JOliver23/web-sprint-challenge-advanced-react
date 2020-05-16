@@ -14,10 +14,11 @@ export default class PlantList extends Component {
     console.log("jo: PlantList.js: PlantList: CDM: cdm run")
     axios("http://localhost:3333/plants")
       .then(response => {
-        this.state.plants = response;
-        console.log(this.state.plants);
+        this.setState({plants: response.data.plantsData})
       })
-      
+       .catch(err => {
+         console.log("Error: ", err)
+       })
   }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
